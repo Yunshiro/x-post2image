@@ -1,6 +1,6 @@
 import { formatCompact, formatFull, pageLocale, parseCount } from "./format";
 
-export type MetricKey = "replies" | "reposts" | "likes" | "bookmarks" | "views";
+export type MetricKey = "replies" | "reposts" | "likes" | "views";
 
 export type MetricsState = Record<MetricKey, number>;
 
@@ -8,7 +8,6 @@ export const EMPTY_METRICS: MetricsState = {
   replies: 0,
   reposts: 0,
   likes: 0,
-  bookmarks: 0,
   views: 0,
 };
 
@@ -16,7 +15,6 @@ const ACTION_TESTIDS: Record<MetricKey, string[]> = {
   replies: ["reply"],
   reposts: ["retweet", "unretweet"],
   likes: ["like", "unlike"],
-  bookmarks: ["bookmark", "removeBookmark"],
   views: [],
 };
 
@@ -45,14 +43,6 @@ function findControl(article: HTMLElement, key: MetricKey): HTMLElement | null {
       scope.querySelector<HTMLElement>('[aria-label*="浏览"]') ??
       scope.querySelector<HTMLElement>('[aria-label*="次观看"]') ??
       scope.querySelector<HTMLElement>('[aria-label*="曝光"]')
-    );
-  }
-  if (key === "bookmarks") {
-    return (
-      scope.querySelector<HTMLElement>('[aria-label*="Bookmark" i]') ??
-      scope.querySelector<HTMLElement>('[aria-label*="收藏"]') ??
-      scope.querySelector<HTMLElement>('[aria-label*="書籤"]') ??
-      scope.querySelector<HTMLElement>('[aria-label*="ブックマーク"]')
     );
   }
   return null;
@@ -92,7 +82,6 @@ function statsLinks(article: HTMLElement, key: MetricKey): HTMLElement[] {
     replies: [],
     reposts: ["/retweets", "/quotes"],
     likes: ["/likes"],
-    bookmarks: ["/bookmarks"],
     views: ["/analytics"],
   };
   return hrefPart[key].flatMap((part) =>

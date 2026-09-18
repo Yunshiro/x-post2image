@@ -2,12 +2,12 @@ import { applyPreviewMetrics, cloneTweet, type CaptureBundle } from "./clone-twe
 import { capturePng, copyPng, downloadPng } from "./capture";
 import { t } from "./i18n";
 import { parseCount } from "./format";
-import { EMPTY_METRICS, readMetrics, type MetricKey, type MetricsState } from "./metrics";
+import { readMetrics, type MetricKey, type MetricsState } from "./metrics";
 import { detectTheme } from "./theme";
 import { showToast } from "./toast";
 import { dismissOpenMenus, getTweetStatusId } from "./x-dom";
 
-const FIELD_ORDER: MetricKey[] = ["replies", "reposts", "likes", "bookmarks", "views"];
+const FIELD_ORDER: MetricKey[] = ["replies", "reposts", "likes", "views"];
 
 let openRoot: HTMLElement | null = null;
 
@@ -16,7 +16,7 @@ function fieldValue(input: HTMLInputElement): number {
 }
 
 function collectValues(form: HTMLElement): MetricsState {
-  const values: MetricsState = { ...EMPTY_METRICS };
+  const values: MetricsState = { replies: 0, reposts: 0, likes: 0, views: 0 };
   FIELD_ORDER.forEach((key) => {
     const input = form.querySelector<HTMLInputElement>(`[data-x2i-field="${key}"]`);
     if (input) {
@@ -65,10 +65,6 @@ export async function openEditor(article: HTMLElement): Promise<void> {
           <label>
             <span>${t("likes")}</span>
             <input data-x2i-field="likes" inputmode="numeric" value="${initial.likes}">
-          </label>
-          <label>
-            <span>${t("bookmarks")}</span>
-            <input data-x2i-field="bookmarks" inputmode="numeric" value="${initial.bookmarks}">
           </label>
           <label>
             <span>${t("views")}</span>
