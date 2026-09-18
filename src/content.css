@@ -1,0 +1,220 @@
+.x2i-menu-item {
+  align-items: center;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  box-sizing: border-box;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  gap: 12px;
+  min-height: 48px;
+  min-width: 270px;
+  padding: 10px 16px;
+  text-align: start;
+  width: 100%;
+}
+
+.x2i-menu-item:hover,
+.x2i-menu-item:focus-visible {
+  background: color-mix(in srgb, currentColor 9%, transparent);
+  outline: none;
+}
+
+.x2i-menu-icon {
+  fill: currentColor;
+  flex: 0 0 20px;
+  height: 20px;
+  width: 20px;
+}
+
+.x2i-root {
+  --x2i-text: #e7e9ea;
+  --x2i-muted: #71767b;
+  --x2i-card: #16181c;
+  --x2i-line: #2f3336;
+  --x2i-accent: #1d9bf0;
+  --x2i-input: #000;
+  font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  inset: 0;
+  position: fixed;
+  z-index: 2147483000;
+}
+
+.x2i-root[data-theme="light"] {
+  --x2i-text: #0f1419;
+  --x2i-muted: #536471;
+  --x2i-card: #ffffff;
+  --x2i-line: #eff3f4;
+  --x2i-input: #ffffff;
+}
+
+.x2i-root[data-theme="dim"] {
+  --x2i-text: #f7f9f9;
+  --x2i-muted: #8b98a5;
+  --x2i-card: #192734;
+  --x2i-line: #38444d;
+  --x2i-input: #15202b;
+}
+
+.x2i-backdrop {
+  background: rgb(91 112 131 / 40%);
+  inset: 0;
+  position: absolute;
+}
+
+.x2i-dialog {
+  background: var(--x2i-card);
+  border: 1px solid var(--x2i-line);
+  border-radius: 16px;
+  box-shadow: 0 12px 48px rgb(0 0 0 / 28%);
+  color: var(--x2i-text);
+  display: flex;
+  flex-direction: column;
+  left: 50%;
+  max-height: min(92vh, 900px);
+  max-width: 920px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100vw - 32px);
+}
+
+.x2i-header,
+.x2i-footer {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  padding: 14px 18px;
+}
+
+.x2i-header {
+  border-bottom: 1px solid var(--x2i-line);
+  justify-content: space-between;
+}
+
+.x2i-header h2 {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.x2i-icon-btn {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+  padding: 4px 8px;
+}
+
+.x2i-body {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  min-height: 0;
+  overflow: hidden;
+  padding: 16px;
+}
+
+.x2i-preview-wrap {
+  background: color-mix(in srgb, var(--x2i-text) 4%, transparent);
+  border: 1px solid var(--x2i-line);
+  border-radius: 12px;
+  min-height: 240px;
+  overflow: auto;
+  padding: 12px;
+}
+
+.x2i-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.x2i-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  font-weight: 700;
+  gap: 6px;
+}
+
+.x2i-form input[data-x2i-field] {
+  background: var(--x2i-input);
+  border: 1px solid var(--x2i-line);
+  border-radius: 8px;
+  color: var(--x2i-text);
+  font: inherit;
+  font-weight: 400;
+  padding: 8px 10px;
+}
+
+.x2i-footer {
+  border-top: 1px solid var(--x2i-line);
+  justify-content: flex-end;
+}
+
+.x2i-btn {
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  padding: 8px 16px;
+}
+
+.x2i-btn.primary {
+  background: var(--x2i-accent);
+  color: #fff;
+}
+
+.x2i-btn.ghost {
+  background: transparent;
+  border: 1px solid var(--x2i-line);
+  color: inherit;
+}
+
+.x2i-btn:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+.x2i-capture-root {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+}
+
+[data-x2i-toast] {
+  background: rgb(29 155 240);
+  border-radius: 999px;
+  bottom: 28px;
+  box-shadow: 0 6px 24px rgb(0 0 0 / 24%);
+  color: #fff;
+  font: 600 14px/20px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  left: 50%;
+  padding: 12px 18px;
+  position: fixed;
+  transform: translateX(-50%);
+  z-index: 2147483647;
+}
+
+[data-x2i-toast="success"] {
+  background: rgb(0 186 124);
+}
+
+[data-x2i-toast="error"] {
+  background: rgb(244 33 46);
+}
+
+@media (max-width: 760px) {
+  .x2i-body {
+    grid-template-columns: 1fr;
+  }
+}

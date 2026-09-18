@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "X Post2Image",
+  "version": "0.1.0",
+  "description": "从 X 分享菜单把帖子复制成截图，可改评论、转发、点赞和曝光。",
+  "permissions": ["clipboardWrite"],
+  "host_permissions": [
+    "https://x.com/*",
+    "https://twitter.com/*",
+    "https://pbs.twimg.com/*",
+    "https://abs.twimg.com/*",
+    "https://video.twimg.com/*",
+    "https://ton.twitter.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://x.com/*", "https://twitter.com/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
